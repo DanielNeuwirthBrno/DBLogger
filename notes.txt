@@ -1,0 +1,40 @@
+
+posledni LSN je nutno natahnout z trackovaci tabulky, ne z logu!!!
+
+cteni novych zaznamu z logu (tj. od posledniho lsn) - ošetřit, pokud se nevrátí žádné záznamy
+
+trackovaci tabulka: ID, DatabaseID, CreateDate, User, TypOperace, CisloTransakce, PocatekTrans,
+                    KonecTrans, LogRecord
+
+osetrit, kdyz lastlsn z logu nevrati zadny zaznam
+po smazani posledni DB - smazat obsah trackovaci tabulky (na UI)
+po smazani posledni DB:
+QSqlDatabasePrivate::removeDatabase: connection 'systemConnection' is still in use, all queries will cease to work.
+
+https://rusanu.com/2014/03/10/how-to-read-and-interpret-the-sql-server-log/
+
+4] šipky doleva/doprava - zobrazit obsah tabulky se změnami této DB
+5] prace s chybami - volat obecnou funkci (typ chyby, odkaz) - chyby ukladat do resources
+6] při načtení DB načíst obsah její změnové tabulky a zobrazit v okně (grid)
+7] zobrazit v okně značku, že DB je aktuálně připojená
+8] DB label - zobrazit s jakou DB se aktualne pracuje (x/n)
+9] moznost zobrazit okno s prehledem vsech sledovanych DB
+
+7) tlačítko Aktualizovat - updatovat trackovací tabulku údaji z logu
+
+- ověřit zda načtená DB existuje na daném serveru v seznamu DB
+přiřazení DB a trackovacích tabulek
+načtení + zobrazení logu + uložení do DB
+
+konfigurace - připojení k DB, log backupy (cesta)
+po spuštění (nebo periodicky):
+- načíst údaje z logu
+- zapsat do tracking-table
+- načíst údaje z backupu logu (pokud v logu není vše)
+- zapsat do tracking-table
+dle záznamu v tracking-table možno obnovit do stavu před změnou (restore)
+
+- při instanciaci Session - v závislosti na nastavení provést okamžité připojení ke všem
+sledovaným databázím nebo jen k systémové
+- při spuštění z příkazového řádku (parametr?) provést pouze připojení k databázím a
+aktualizaci údajů v systémové DB (načíst údaje z logu a backupu logu)

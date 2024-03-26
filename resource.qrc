@@ -1,0 +1,24 @@
+<RCC>
+    <qresource prefix="/query">
+        <file>sql/check_if_db_is_already_tracked.sql</file>
+        <file>sql/stop_tracking_of_database.sql</file>
+        <file>sql/master/dbstatus.sql</file>
+        <file>sql/master/derive_id_from_database_name.sql</file>
+        <file>sql/master/derive_name_from_database_id.sql</file>
+        <file>sql/list_of_tracked_databases.sql</file>
+        <file>sql/track_new_database.sql</file>
+        <file>sql/update_db_connection_settings.sql</file>
+        <file>sql/master/retrieve_last_lsn_from_log.sql</file>
+        <file>sql/master/retrieve_data_from_log.sql</file>
+        <file>sql/create_new_log_table.sql</file>
+        <file>sql/drop_log_table.sql</file>
+        <file>sql/update_log_table_with_new_data.sql</file>
+    </qresource>
+    <qresource prefix="/icons">
+        <file>icons/server-database.png</file>
+        <file>icons/arrow-left.png</file>
+        <file>icons/arrow-right.png</file>
+        <file>icons/list-add.png</file>
+        <file>icons/list-remove.png</file>
+    </qresource>
+</RCC>
